@@ -6,14 +6,13 @@
     // ALL DOM RELATED QUERYING GOES HERE
 
     formDataXHR.addEventListener("load", function(e){
-      console.log(e.target);
       var formDataArray = JSON.parse(e.target.responseText);
       var formElement = document.querySelector("[data-js='form--data']");
 
       formDataArray.forEach(function(formField){
-
+        console.log(formDataArray);
         if(formField.type === "select"){
-          var selectHTML = "<select>";
+          var selectHTML = "<select class= 'input__select' >";
           formField.options.forEach(function(option){
             selectHTML += `
               <option value="${option.value}">${option.label}</option>
@@ -24,7 +23,12 @@
 
         }else{
             formElement.innerHTML += `
-              <input type="${formField.type}" placeholder="${formField.label}" value="" id="${formField.id}" class="${formField.icon}">
+              <span class= "input__field">
+                <i class= "fa ${formField.icon}"></i>
+                <label class= "input__label">${formField.label}
+                  <input type="${formField.type}" value="" id="${formField.id}">
+                </label>
+              </span>
             `;
 
         }
