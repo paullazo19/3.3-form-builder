@@ -12,7 +12,9 @@
       formDataArray.forEach(function(formField){
         console.log(formDataArray);
         if(formField.type === "select"){
-          var selectHTML = "<select class= 'input__select' >";
+          var selectHTML = "";
+          selectHTML += "<select class= 'input__select' >";
+          selectHTML += "<option value = ''>Select language...</option>"
           formField.options.forEach(function(option){
             selectHTML += `
               <option value="${option.value}">${option.label}</option>
